@@ -12,13 +12,13 @@ function Rectangle(color) {
 }
 
 // Method overriding 
-Shape.prototype.draw = function() {}
+Shape.prototype.draw = function() {};
 Circle.prototype.draw = function() {
     // Call the base implementation 
     Shape.prototype.draw.call(this);
 
     // Do additional stuff here 
-}
+};
 
 // Don't create large inheritance hierarchies. 
 // One level of inheritance is fine. 
