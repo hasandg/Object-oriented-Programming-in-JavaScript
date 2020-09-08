@@ -18,15 +18,24 @@ function HtmlSelectElement(items = []) {
     this.removeItem = function (item) {
         this.items.splice(this.items.indexOf(item), 1);
     };
-
-    this.render = function () {
+// old style
+/*    this.render = function () {
         let str = "<select>\n";
         for (const item of items) {
             str = str.concat(`<option>${item}</option>\n`)
         }
         str = str + "</select>\n"
         return str;
+    }*/
+    this.render = function () {
+        return `
+            <select>${items.map(item => `
+                <option>${item}</option>`).join('')}
+            </select>`;
     }
+
+
+
 }
 
 HtmlSelectElement.prototype = new HtmlElement();
@@ -42,9 +51,12 @@ function HtmlImageElement(src) {
     }
 
     this.render = () => {
-        return this.src ? "<img></img>" : `<img src="${this.src}"></img>`;
+        return this.src ?  `<img src="${this.src}"></img>` :"<img></img>" ;
     }
 }
 
 HtmlImageElement.prototype = new HtmlElement();
 HtmlImageElement.prototype.constructor = HtmlSelectElement;
+
+
+let i = new HtmlImageElement();
