@@ -1,7 +1,11 @@
 
 
 class Stack {
+ push = function () {
+
+    }
 }
+
 
 
 class SubStack extends Stack{
