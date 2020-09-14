@@ -1,15 +1,36 @@
 
+_myArray = new WeakMap();
 
 class Stack {
- push = function () {
 
+    constructor() {
+        _myArray.set(this, [])
+    }
+
+
+    push = (value) => {
+        _myArray.get(this).push(value);
+    }
+
+    pop = () => {
+        let items = _myArray.get(this);
+        if (items.length <= 0) {
+            throw Error("Stack is empty!");
+        }
+        return items.pop();
+    }
+
+    peek = () => {
+        let items = _myArray.get(this);
+        if (items.length <= 0) {
+            throw Error("Stack is empty!");
+        }
+        return items[items.length - 1];
+    }
+
+    get count() {
+        return _myArray.get(this).length;
     }
 }
 
-
-
-class SubStack extends Stack{
-
-}
-
-let ss = new SubStack();
+let stack = new Stack();
